@@ -162,7 +162,7 @@ namespace STLINKFlash
                 stlink.WriteDBGREG(ADDR_ADDR, (uint)addr);
                 stlink.WriteDBGREG(ADDR_STAS, 1);
                 while (stlink.ReadDBGREG(ADDR_STAS) != 0x80) System.Threading.Thread.Sleep(0);
-                stlink.readMem(ADDR_DATA, len, data);
+                stlink.readMem(ADDR_DATA, data.Length, data);
                 ms.Write(data, 0, len);
 
                 FileStream fs = new FileStream(path, FileMode.OpenOrCreate);
